@@ -14,6 +14,7 @@
 		368C7FE21A1C2E0100011A79 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 368C7FE11A1C2E0100011A79 /* Images.xcassets */; };
 		368C7FE51A1C2E0100011A79 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 368C7FE31A1C2E0100011A79 /* LaunchScreen.xib */; };
 		368C7FF11A1C2E0100011A79 /* iFibonacciTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 368C7FF01A1C2E0100011A79 /* iFibonacciTests.m */; };
+		368C7FFB1A1C30BA00011A79 /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 368C7FFA1A1C30BA00011A79 /* View.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		368C7FEA1A1C2E0100011A79 /* iFibonacciTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iFibonacciTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		368C7FEF1A1C2E0100011A79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		368C7FF01A1C2E0100011A79 /* iFibonacciTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iFibonacciTests.m; sourceTree = "<group>"; };
+		368C7FFA1A1C30BA00011A79 /* View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = View.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 				368C7FD91A1C2E0100011A79 /* AppDelegate.m */,
 				368C7FDB1A1C2E0100011A79 /* ViewController.h */,
 				368C7FDC1A1C2E0100011A79 /* ViewController.m */,
+				368C7FFA1A1C30BA00011A79 /* View.xib */,
 				368C7FDE1A1C2E0100011A79 /* Main.storyboard */,
 				368C7FE11A1C2E0100011A79 /* Images.xcassets */,
 				368C7FE31A1C2E0100011A79 /* LaunchScreen.xib */,
@@ -199,6 +202,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				368C7FFB1A1C30BA00011A79 /* View.xib in Resources */,
 				368C7FE01A1C2E0100011A79 /* Main.storyboard in Resources */,
 				368C7FE51A1C2E0100011A79 /* LaunchScreen.xib in Resources */,
 				368C7FE21A1C2E0100011A79 /* Images.xcassets in Resources */,

@@ -5,7 +5,7 @@
 //  Created by Sami B on 2014-11-18.
 //  Copyright (c) 2014 Sami B. All rights reserved.
 //
-
+#import "ViewController.h"
 #import "AppDelegate.h"
 
 @interface AppDelegate ()
@@ -17,6 +17,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    ViewController * vc = [ViewController new];
+    self.window.rootViewController = vc;
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 

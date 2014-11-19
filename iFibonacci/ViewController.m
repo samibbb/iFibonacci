@@ -8,20 +8,38 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
-
-@end
+static NSString *const FibonacciCellIdentifier = @"FibonacciCellIdentifier";
 
 @implementation ViewController
+{
+    NSMutableArray *fibCache;
+}
+
+- (NSNumber *)fibonacci:(NSUInteger)index {
+    for (NSUInteger i = fibCache.count - 1; i < index; i++)
+        [fibCache addObject:@(((NSNumber *)fibCache[i - 1]).unsignedIntegerValue + ((NSNumber *)fibCache[i]).unsignedIntegerValue)];
+    
+    return fibCache[index];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    fibCache = @[@(0), @(1)].mutableCopy;
+    [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:FibonacciCellIdentifier];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 50;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:FibonacciCellIdentifier];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@", [self fibonacci:indexPath.row]];
+    return cell;
 }
 
 @end
