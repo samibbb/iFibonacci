@@ -8,38 +8,65 @@
 
 #import "ViewController.h"
 
+static NSUInteger maxFibonnacciIndexForLongLong = 94; // Fibonacci values after this index exceed ULONG_LONG_MAX, sum yields invalid values
 static NSString *const FibonacciCellIdentifier = @"FibonacciCellIdentifier";
 
-@implementation ViewController
-{
+@implementation ViewController {
     NSMutableArray *fibCache;
 }
 
 - (NSNumber *)fibonacci:(NSUInteger)index {
-    for (NSUInteger i = fibCache.count - 1; i < index; i++)
-        [fibCache addObject:@(((NSNumber *)fibCache[i - 1]).unsignedIntegerValue + ((NSNumber *)fibCache[i]).unsignedIntegerValue)];
+    
+    for (NSUInteger i = fibCache.count - 1; i < index; i++){
+        NSNumber * valueAtThisIndex = @(((NSNumber *)fibCache[i - 1]).unsignedLongLongValue + ((NSNumber *)fibCache[i]).unsignedLongLongValue);
+        // How the max index was found...
+        
+        if (valueAtThisIndex.unsignedLongLongValue < [fibCache[index-1] unsignedLongLongValue]){
+            
+            NSLog(@"max index: %d", index);
+            
+            break;
+            
+        }
+        [fibCache addObject:valueAtThisIndex];
+    }
     
     return fibCache[index];
+    
 }
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
+    
     fibCache = @[@(0), @(1)].mutableCopy;
+    
     [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:FibonacciCellIdentifier];
+    
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    
     return 1;
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 50;
+    
+    // Anything past exceeds the limit of LONG_LONG_MAX
+    
+    return maxFibonnacciIndexForLongLong;
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:FibonacciCellIdentifier];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@", [self fibonacci:indexPath.row]];
+    
+    cell.textLabel.text = [NSString stringWithFormat:@"%llu", [[self fibonacci:indexPath.row] unsignedLongLongValue]];
+    
     return cell;
+    
 }
 
 @end
