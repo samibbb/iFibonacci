@@ -19,20 +19,16 @@ static NSString *const FibonacciCellIdentifier = @"FibonacciCellIdentifier";
     
     for (NSUInteger i = fibCache.count - 1; i < index; i++){
         NSNumber * valueAtThisIndex = @(((NSNumber *)fibCache[i - 1]).unsignedLongLongValue + ((NSNumber *)fibCache[i]).unsignedLongLongValue);
-        // How the max index was found...
         
+        // How the max index was found...
         if (valueAtThisIndex.unsignedLongLongValue < [fibCache[index-1] unsignedLongLongValue]){
-            
             NSLog(@"max index: %d", index);
-            
             break;
-            
         }
         [fibCache addObject:valueAtThisIndex];
     }
     
     return fibCache[index];
-    
 }
 
 - (void)viewDidLoad {
@@ -46,25 +42,18 @@ static NSString *const FibonacciCellIdentifier = @"FibonacciCellIdentifier";
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    
     return 1;
-    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
     // Anything past exceeds the limit of LONG_LONG_MAX
-    
     return maxFibonnacciIndexForLongLong;
-    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:FibonacciCellIdentifier];
-    
     cell.textLabel.text = [NSString stringWithFormat:@"%llu", [[self fibonacci:indexPath.row] unsignedLongLongValue]];
-    
     return cell;
     
 }
