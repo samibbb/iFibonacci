@@ -20,7 +20,6 @@ static NSString *const FibonacciCellIdentifier = @"FibonacciCellIdentifier";
     for (NSUInteger i = fibCache.count - 1; i < index; i++){
         NSNumber * valueAtThisIndex = @(((NSNumber *)fibCache[i - 1]).unsignedLongLongValue + ((NSNumber *)fibCache[i]).unsignedLongLongValue);
         
-        // How the max index was found...
         if (valueAtThisIndex.unsignedLongLongValue < [fibCache[index-1] unsignedLongLongValue]){
             NSLog(@"max index: %d", index);
             break;
@@ -46,7 +45,6 @@ static NSString *const FibonacciCellIdentifier = @"FibonacciCellIdentifier";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Anything past exceeds the limit of LONG_LONG_MAX
     return maxFibonnacciIndexForLongLong;
 }
 
